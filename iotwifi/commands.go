@@ -74,6 +74,10 @@ func (c *Command) StartDnsmasq() {
 		"--dhcp-vendorclass=" + c.SetupCfg.DnsmasqCfg.VendorClass,
 		"--dhcp-authoritative",
 		"--log-facility=-",
+		"--listen-address=" + c.SetupCfg.DnsmasqCfg.ListenAddress,
+		"--interface=uap0",
+		"--except-interface=lo",
+		"--bind-interfaces",
 	}
 
 	cmd := exec.Command("dnsmasq", args...)
